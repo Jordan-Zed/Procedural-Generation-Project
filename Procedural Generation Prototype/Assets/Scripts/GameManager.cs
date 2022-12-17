@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     //List containing all the prefab chunks from unity
     public GameObject[] prefabs;
     public GameObject[] prefabsBR;
@@ -25,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] branchPrefab;
 
+    public static List<GameObject> allChunks = new List<GameObject>();
 
     //int for width of chunks to be spawned
     public int width;
@@ -36,12 +36,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameObject chunk = Instantiate(prefabs[Random.Range(0, prefabs.Length)], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        allChunks.Add(chunk);
         chunk.AddComponent<PrefabScript>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
